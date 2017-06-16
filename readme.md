@@ -62,7 +62,7 @@ Will produce
 Example
 ```html
 <!-- name exists and is "Peter" -->
-<p>{{ if|name }}Hi {{ var|name }}{{ end }}</p>
+<p>{% if name %}Hi {{ var|name }}{% end %}</p>
 ```
 
 Will produce
@@ -74,7 +74,7 @@ Will produce
 Example
 ```html
 <!-- name exists and is "Peter", age does not exist -->
-<p>{{ if|name,age }}Hi {{ var|name }}, {{ var|age }}{{ end }}</p>
+<p>{% if name && age %}Hi {{ var|name }}, {{ var|age }}{% end %}</p>
 ```
 
 Will produce
@@ -86,7 +86,7 @@ Will produce
 Example
 ```html
 <!-- name does not exist -->
-<p>{{ !if|name }}Something something darkside..{{ end }}</p>
+<p>{% !if name %}Something something darkside..{% end %}</p>
 ```
 
 Will produce
@@ -98,19 +98,7 @@ Will produce
 Example
 ```html
 <!-- name is "Peter" -->
-<p>{{ if|name|<string>"Peter" }}Hi Peter{{ end }}</p>
-```
-
-Will produce
-```html
-<p>Peter</p>
-```
-
-### Check if Variable is Equal to Something, using Reflection
-Example
-```html
-<!-- name is "Peter" -->
-<p>{{ if|name|"Peter" }}Hi Peter{{ end }}</p>
+<p>{% if name == "Peter" %}Hi Peter{% end %}</p>
 ```
 
 Will produce
@@ -122,7 +110,7 @@ Will produce
 Example
 ```html
 <!-- name is "Peter", age is 27 -->
-<p>{{ if|name,age|"Peter",37 }}Hi Peter{{ end }}</p>
+<p>{% if name == "Peter" && age == 37 %}Hi Peter{% end %}</p>
 ```
 
 Will produce
@@ -134,7 +122,7 @@ Will produce
 Example
 ```html
 <!-- name is "Parker" -->
-<p>{{ !if|name|<string>"Peter" }}Where did Peter go?{{ end }}</p>
+<p>{% if name != "Peter" %}Where did Peter go?{% end %}</p>
 ```
 
 Will produce
@@ -146,7 +134,7 @@ Will produce
 Example
 ```html
 <!-- name is "Peter" -->
-<p>{{ if|name }}Variable exists and is {{ var|name }}{{ else }}Variable does not exists{{ end }}</p>
+<p>{% if name %}Variable exists and is {{ var|name }}{% else %}Variable does not exists{% end %}</p>
 ```
 
 Will produce
@@ -159,9 +147,9 @@ Example
 ```html
 <!-- people = ["Peter", "Parker", "Molly"] -->
 <ul>
-{{ loop|people }}
+{% loop people %}
 	<li>{{ var|%index }}</li>
-{{ end }}
+{% end %}
 </ul>
 ```
 
@@ -179,9 +167,9 @@ Example
 ```html
 <!-- people = [{name: "Peter"}, {name: "Parker"}, {name: "Molly"}] -->
 <ul>
-{{ loop:people|0,1 }}
+{% loop people steps 0,1 %}
 	<li>{{ var|name }}</li>
-{{ end }}
+{% end %}
 </ul>
 ```
 
@@ -198,18 +186,18 @@ Example
 ```html
 <!-- companies = [{name: "Microsoft", people = ["Peter", "Parker"]},
                   {name: "Apple", people = ["Molly", "Holly"]}] -->
-{{ if|companies }}<ul>{{ end }}
-{{ loop|companies }}
+{% if companies %}<ul>{% end %}
+{% loop companies %}
 	<li>
 		<h1>{{ var|name }}</h1>
-		{{ if|people }}<ul>{{ end }}
-		{{ loop|people }}
+		{% if people %}<ul>{% end %}
+		{% loop people %}
 			<li>{{ var|%index }}</li>
-		{{ end }}
-		{{ if|people }}</ul>{{ end }}
+		{% end %}
+		{% if people %}</ul>{% end %}
 	</li>
-{{ end }}
-{{ if|companies }}</ul>{{ end }}
+{% end %}
+{% if companies %}</ul>{% end %}
 ```
 
 Will produce
