@@ -196,7 +196,8 @@ Will produce
 ### Do a Nested Loop
 Example
 ```html
-<!-- companies = [{name: "Microsoft", people = ["Peter", "Parker"]}, {name: "Apple", people = ["Molly", "Holly"]} -->
+<!-- companies = [{name: "Microsoft", people = ["Peter", "Parker"]},
+                  {name: "Apple", people = ["Molly", "Holly"]} -->
 {{ if|companies }}<ul>{{ end }}
 {{ loop|companies }}
 	<li>
