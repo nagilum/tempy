@@ -197,7 +197,7 @@ Will produce
 Example
 ```html
 <!-- companies = [{name: "Microsoft", people = ["Peter", "Parker"]},
-                  {name: "Apple", people = ["Molly", "Holly"]} -->
+                  {name: "Apple", people = ["Molly", "Holly"]}] -->
 {{ if|companies }}<ul>{{ end }}
 {{ loop|companies }}
 	<li>
