@@ -234,3 +234,11 @@ Will produce
 	</li>
 </ul>
 ```
+
+## Template Functions
+
+### Count
+Example
+```html
+<p>{% if count(members) > 1 %}More than one member!{% end %}</p>
+```
