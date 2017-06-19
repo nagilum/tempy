@@ -89,7 +89,7 @@ Will produce
 Example
 ```html
 <!-- name exists and is "Peter", age does not exist -->
-<p>{% if name && age %}Hi {{ var|name }}, {{ var|age }}{% end %}</p>
+<p>{% if name and age %}Hi {{ var|name }}, {{ var|age }}{% end %}</p>
 ```
 
 Will produce
@@ -101,7 +101,7 @@ Will produce
 Example
 ```html
 <!-- name does not exist -->
-<p>{% !if name %}Something something darkside..{% end %}</p>
+<p>{% if not name %}Something something darkside..{% end %}</p>
 ```
 
 Will produce
@@ -125,7 +125,17 @@ Will produce
 Example
 ```html
 <!-- name is "Peter", age is 27 -->
-<p>{% if name == "Peter" && age == 37 %}Hi Peter{% end %}</p>
+<p>{% if name == "Peter" and age == 37 %}Hi Peter{% end %}</p>
+```
+
+Will produce
+```html
+<p>Peter</p>
+```
+
+```html
+<!-- name is "Peter", age is 27 -->
+<p>{% if name == "Peter" or age == 37 %}Hi Peter{% end %}</p>
 ```
 
 Will produce
@@ -137,7 +147,7 @@ Will produce
 Example
 ```html
 <!-- name is "Parker" -->
-<p>{% if name != "Peter" %}Where did Peter go?{% end %}</p>
+<p>{% if name not "Peter" %}Where did Peter go?{% end %}</p>
 ```
 
 Will produce
