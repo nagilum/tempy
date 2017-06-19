@@ -1,3 +1,11 @@
+### Settings
+Example
+```html
+{! layout|post !}
+```
+
+This will load the post layout file and put content into {{ content }}
+
 ### Single Variable
 Example
 ```html
