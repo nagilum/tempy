@@ -1,10 +1,17 @@
+# Tempy
+
+## Layout
+
 ### Settings
 Example
 ```html
 {! layout|post !}
 ```
 
-This will load the post layout file and put content into {{ content }}
+This will load the post layout file and put content into ```{{ content }}```.
+This is registered through the ```.RegisterLayout()``` function.
+
+## Template Content and Loops
 
 ### Single Variable
 Example
